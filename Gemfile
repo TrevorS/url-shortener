@@ -23,3 +23,5 @@ end
 gem 'jquery-rails'
 gem 'thin'
 gem 'annotate'
+gem 'simple_form'
+gem 'bootstrap-sass'
