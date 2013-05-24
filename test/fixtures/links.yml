@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: links
+#
+#  id         :integer          not null, primary key
+#  user_url   :string(255)
+#  short_url  :string(255)
+#  ip         :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_url: MyString
+  short_url: MyString
+  ip: MyString
+
+two:
+  user_url: MyString
+  short_url: MyString
+  ip: MyString
