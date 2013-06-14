@@ -16,6 +16,6 @@ class Link < ActiveRecord::Base
 
   private
   def generate_short_url
-    self.short_url = Digest::MD5.hexdigest(self.user_url + DateTime.now.to_i.to_s).first(6)
+    self.short_url = Digest::MD5.hexdigest(self.user_url + DateTime.now.to_i.to_s).first(6).encode("UTF-8")
   end
 end

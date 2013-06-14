@@ -6,6 +6,7 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(params[:link])
+    @link.ip = request.remote_ip.encode("UTF-8")
     if @link.save
       @full_url = "http://#{@link.short_url}"
       respond_to do |format|
