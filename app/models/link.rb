@@ -12,4 +12,12 @@
 
 class Link < ActiveRecord::Base
   attr_accessible :ip, :short_url, :user_url
+
+  before_save :generate_short_url
+
+  private
+  def generate_short_url
+    puts :user_url
+    self.short_url = Digest::MD5.hexdigest(self.user_url + DateTime.now.to_i.to_s).first(6)
+  end
 end
