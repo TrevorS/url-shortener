@@ -1,5 +1,13 @@
-<h1>URL Shortener</h1>
-<%= simple_form_for(@link) do |f| %>
-  <%= f.input :user_url %>
-  <%= f.button :submit %>
-<% end %>
+<div class="hero-unit url-well">
+  <div class="row">
+    <h1>URL Shortener</h1>
+    <%= simple_form_for(@link, remote: true, html: { class: 'form-inline, url-form' }) do |f| %>
+
+      <%= f.input_field :user_url, placeholder: 'Enter your URL and click GO!', class: 'url-input span9' %>
+      <%= f.submit 'GO!', class: 'btn btn-large btn-success url-button' %>
+
+    <% end %>
+  </div>
+  <div class="url-results">
+  </div>
+</div>

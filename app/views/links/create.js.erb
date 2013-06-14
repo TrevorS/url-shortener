@@ -1,0 +1,4 @@
+var $results = $(".url-results");
+$results.hide();
+$results.append("<%= escape_javascript(get_full_short_link(@link)) %>");
+$results.fadeIn(300);

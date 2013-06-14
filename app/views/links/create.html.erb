@@ -1,3 +1,9 @@
-<h1>URL Created!</h1>
-<p>Original URL: <%= @link.user_url %></p>
-<p>Shortened URL: <%= @link.short_url %></p>
+<div class="hero-unit url-well">
+  <div class="row">
+    <div class="span10">
+      <h1>Your URL:</h1>
+      <p>Original URL: <%= get_full_user_link(@link) %></p>
+      <p>Shortened URL: <%= get_full_short_link(@link) %></p>
+    </div>
+  </div>
+</div>

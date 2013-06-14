@@ -1,3 +1,39 @@
 // Place all the styles related to the Links controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    background-image:url(image_path('debut_dark_@2X.png'));
+    padding-top: 90px;
+}
+
+h1 {
+    padding-bottom: 15px;
+}
+
+.url-well {
+    opacity: 0.95;
+    filter:alpha(opacity=95);
+}
+
+.url-input {
+    margin-top: 10px !important;
+    height: 68px !important;
+    line-height: 68px !important;
+    font-size: 30px !important;
+}
+
+.url-button {
+
+    padding: 18px 28px !important;
+    font-size: 30px !important;
+    line-height: normal !important;
+    -webkit-border-radius: 8px !important;
+       -moz-border-radius: 8px !important;
+            border-radius: 8px !important;
+}
+
+.url-results {
+    margin-left: -20px !important;
+    font-size: 30px !important;
+}
