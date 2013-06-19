@@ -2,18 +2,24 @@
 #
 # Table name: links
 #
-#  id         :integer          not null, primary key
-#  user_url   :string(255)
-#  short_url  :string(255)
-#  ip         :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :integer          not null, primary key
+#  user_url      :string(255)
+#  short_url     :string(255)
+#  ip            :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  scheme_id     :integer
+#  click_counter :integer
 #
 
 class Link < ActiveRecord::Base
-  attr_accessible :ip, :short_url, :user_url, :scheme_id
+  attr_accessible :ip, :user_url
   belongs_to :scheme
   before_save :generate_urls
+
+  def add_click
+    self.click_counter += 1
+  end
 
   private
 

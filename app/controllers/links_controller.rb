@@ -23,12 +23,13 @@ class LinksController < ApplicationController
 
   def show
     link = Link.where(short_url: params[:path]).first
+    link.add_click
+    link.save
     redirect_to get_full_user_url(link)
   end
 
   private
   def get_full_user_url(link)
-    puts "Hello!"
     scheme = Scheme.find(link.scheme_id).name
     "#{scheme}#{link.user_url}"
   end
