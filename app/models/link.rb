@@ -11,14 +11,29 @@
 #
 
 class Link < ActiveRecord::Base
-  attr_accessible :ip, :short_url, :user_url
-  before_save :clean_and_generate_urls
+  attr_accessible :ip, :short_url, :user_url, :scheme_id
+  belongs_to :scheme
+  before_save :generate_urls
 
   private
-  def clean_and_generate_urls
-    if self.user_url.start_with?('http://')
-      self.user_url = self.user_url.last(self.user_url.length - 7)
+
+  # the scheme used when there isn't one submitted
+  @@default_scheme = 'http://'
+
+  # fix up user_url and generate short_url
+  def generate_urls
+    # use the default scheme in case there isn't one
+    scheme = @@default_scheme
+    # grab the user's url
+    url = self.user_url
+    # does it have a scheme?
+    if url.include?('://')
+      # grab the scheme
+      scheme = url[0, url.index("://") + 3]
+      # remove the scheme from the user's url
+      self.user_url = url[url.index("://") + 3 .. url.length]
     end
-    self.short_url = Digest::MD5.hexdigest(self.user_url + DateTime.now.to_i.to_s).first(6).encode("UTF-8")
+    self.scheme_id = Scheme.where(name: scheme).first.id
+    self.short_url = Digest::MD5.hexdigest(scheme + self.user_url).first(6).encode("UTF-8") unless self.scheme_id.nil?
   end
 end
