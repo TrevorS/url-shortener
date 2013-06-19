@@ -1,7 +1,8 @@
 module LinksHelper
 
   def get_full_user_link(link)
-    url = "http://#{link.user_url}"
+    scheme = Scheme.find(link.scheme_id).name
+    url = "#{scheme}#{link.user_url}"
     link_to url, url
   end
 

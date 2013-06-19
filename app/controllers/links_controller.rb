@@ -8,7 +8,6 @@ class LinksController < ApplicationController
     @link = Link.new(params[:link])
     @link.ip = request.remote_ip.encode("UTF-8")
     if @link.save
-      @full_url = "http://#{@link.short_url}"
       respond_to do |format|
         format.html
         format.js
@@ -29,6 +28,8 @@ class LinksController < ApplicationController
 
   private
   def get_full_user_url(link)
-    "http://#{link.user_url}"
+    puts "Hello!"
+    scheme = Scheme.find(link.scheme_id).name
+    "#{scheme}#{link.user_url}"
   end
 end
