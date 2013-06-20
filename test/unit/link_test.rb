@@ -9,7 +9,7 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  scheme_id     :integer
-#  click_counter :integer
+#  click_counter :integer          default(0)
 #
 
 require 'test_helper'
